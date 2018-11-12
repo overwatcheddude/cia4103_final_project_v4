@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Layout.master.cs" Inherits="Layout" %>
+
+<!doctype html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="Assets/Styles/bootstrap.min.css">
+    <link rel="stylesheet" href="Assets/Styles/main.css">
+    <link rel="stylesheet" href="Assets/Styles/fontawesome.min.css">
+    
+    <title></title>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="top-bar">
+            <div class="container">
+                <img src="Assets/Images/logo.png" alt="HCT Logo">
+            
+                <div id="userInfo" class="float-right dropdown d-sm-none d-none d-md-block" visible="false" runat="server">
+                    <button class="btn btn-link profile-link dropdown-toggle mt-3" type="button" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-user"></i> <asp:Label ID="lblHeaderName" runat="server"></asp:Label>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="Profile.aspx">View Profile</a>
+                        <a class="dropdown-item" href="Login.aspx?action=logout">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav id="navStudent" class="navbar navbar-expand-lg navbar-dark mb-4" visible="false" runat="server">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#studentNavbar" aria-controls="studentNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="studentNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item<% if (this.Page.Request.FilePath == "/Opportunities.aspx") { %> active<% } %>">
+                            <a class="nav-link" href="Opportunities.aspx">Opportunities</a>
+                        </li>
+                        <li class="nav-item<% if (this.Page.Request.FilePath == "/Organizations.aspx") { %> active<% } %>">
+                            <a class="nav-link" href="Organizations.aspx">Organizations</a>
+                        </li>
+                        <li class="nav-item<% if (this.Page.Request.FilePath == "/Contact.aspx") { %> active<% } %>">
+                            <a class="nav-link" href="Contact.aspx">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="content">
+            <div class="container">
+                <asp:ContentPlaceHolder id="content" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </section>
+
+        <script src="Assets/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="Assets/Scripts/bootstrap.bundle.min.js"></script>
+    </form>
+</body>
+</html>
